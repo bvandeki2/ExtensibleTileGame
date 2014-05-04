@@ -234,11 +234,29 @@ var TerrainGenerator = function(tileRegistry, method) {
                 ]
             }, {
                 start: 20,
+                eval: new Evaluable("*", {
+                    a: new Evaluable("noise", 0),
+                    b: new Evaluable("lerp", {
+                        a: new Evaluable("noise", {
+                            id: 1,
+                            scale: 0.3
+                        }),
+                        b: 1,
+                        x: new Evaluable("ratio")
+                    })
+                }),
+                types: [{
+                    start: 0, tile: "stone" }, {
+                    start: 0.36, tile: "air" }, {
+                    start: 0.64, tile: "stone" }
+                ]
+            }, {
+                start: 1024,
                 eval: new Evaluable("noise"),
                 types: [{
                     start: 0, tile: "stone" }, {
-                    start: 0.4, tile: "air" }, {
-                    start: 0.6, tile: "stone" }
+                    start: 0.36, tile: "air" }, {
+                    start: 0.64, tile: "stone" }
                 ]
             }
         ]
@@ -324,11 +342,21 @@ var Evaluable = (function() {
                 return (process(this.data.a, x, y, ratio) / 
                         process(this.data.b, x, y, ratio));
             case "noise":
-                return (getNoise(x, y, process(this.data, x, y, ratio)));
+                var id, scale = 1;
+                if (typeof this.data === "object") {
+                    id = process(this.data.id, x, y, ratio);
+                    scale = process(this.data.scale, x, y, ratio);
+                } else
+                    id = process(this.data, x, y, ratio);
+                return (getNoise(x * scale, y * scale, id));
             case "lerp":
                 var r = process(this.data.x, x, y, ratio);
                 return ((1 - r) * process(this.data.a, x, y, ratio) +
                         (    r) * process(this.data.b, x, y, ratio));
+            case "inrange":
+                var x = process(this.data.x, x, y, ratio);
+                return (process(this.data.a, x, y, ratio) <= x &&
+                        process(this.data.b, x, y, ratio) > x);
         }
     };
     
