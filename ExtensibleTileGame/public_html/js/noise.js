@@ -1,5 +1,3 @@
-// ===Taken from three.js repo===
-
 // Ported from Stefan Gustavson's java implementation
 // http://staffwww.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf
 // Read Stefan's excellent paper for details on how this code works.
@@ -13,6 +11,7 @@
  * You can pass in a random number generator object if you like.
  * It is assumed to have a random() method.
  */
+
 var SimplexNoise = function(r) {
 	if (r.random === undefined) r = Math;
   this.grad3 = [[1,1,0],[-1,1,0],[1,-1,0],[-1,-1,0], 
