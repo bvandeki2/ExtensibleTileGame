@@ -53,8 +53,6 @@ World.prototype.requestDisplayCache = function(newRegion) {
         this.displayCaches[selected].region.freeDisplayCache();
     this.displayCaches[selected].region = newRegion;
     return (this.displayCaches[selected]);
-    
-    
 };
 World.prototype.getRegion = function(x, y) {
     // Verify it exists
@@ -356,7 +354,7 @@ var Evaluable = (function() {
             case "inrange":
                 var x = process(this.data.x, x, y, ratio);
                 return (process(this.data.a, x, y, ratio) <= x &&
-                        process(this.data.b, x, y, ratio) > x);
+                        process(this.data.b, x, y, ratio) > x ? 1 : 0);
         }
     };
     
