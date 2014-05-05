@@ -39,6 +39,7 @@ window.onload = function() {
             
             this.grav = 24;
             this.jumpSpeed = 768;
+            this.maxDy = 1000;
             
             this.y = 0;
             
@@ -84,6 +85,7 @@ window.onload = function() {
                     this.dy = -this.jumpSpeed;
             } else
                 this.dy += this.grav;
+            this.dy = Math.min(this.maxDy, Math.max(-this.maxDy, this.dy));
             
             // Collision and motion update
             if (this.inWall(
