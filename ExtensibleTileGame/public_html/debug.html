@@ -5,10 +5,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        <!-- The sheer number of scripts is to help debug, so I can do so
+             without using re-"compiling" the source -->
+        
         <script src="js/lib/lz-string-1.3.3-min.js"></script>
         <script src="js/lib/noise.js"></script>
         <script src="js/lib/gameEngine.js"></script>
-        <script src="js/game.min.js"></script>
+        
+        <script src="js/game/TileGame.js"></script>
+        
+        <script src="js/game/Evaluable.js"></script>
+        <script src="js/game/TileRegistry.js"></script>
+        
+        <script src="js/game/Entity/Player.js"></script>
+        <script src="js/game/Entity/Cursor.js"></script>
+        <script src="js/game/Entity/WorldRenderer.js"></script>
+        
+        <script src="js/game/World/World.js"></script>
+        <script src="js/game/World/Region.js"></script>
+        <script src="js/game/World/TerrainGenerator.js"></script>
+        <script src="js/game/World/Tile.js"></script>
+        
         <style type="text/css" media="screen">
             html {
                 height: 100%;

@@ -185,7 +185,7 @@ var GameEngine = (function(self) {
 		
 		// Mouse events
 		this.game.canvas.addEventListener("mouseleave", this.resetInput.bind(this));
-		canvas.addEventListener("mousemove", function(e) {
+		this.game.canvas.addEventListener("mousemove", function(e) {
 			var bounds = this.game.canvas.getBoundingClientRect();
 			this.mouse.x = e.clientX - bounds.left;
 			this.mouse.y = e.clientY - bounds.top;
