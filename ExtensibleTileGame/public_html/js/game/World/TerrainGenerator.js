@@ -56,6 +56,18 @@ var TerrainGenerator = (function() {
             ]
         };
     };
+    
+    module.protoype.addGenStop = function(start, eval, types) {
+        var i = 0, shapes =  this.method.shapes;
+        while (i < shapes.length && start >= shapes[i].start)
+           i++;
+        if (shapes[i].start === start)
+            throw {name: "TerrainGeneratorStopCollision",
+                   message: "TerrainGenerator already has a shape definition" +
+                            "for depth " + start};
+        shapes.splice(i, 0, {start: start, eval: eval, types: types});
+    };
+    
     /**
      * Generates a single tile at x, y
      * @param {type} x x-coordinate of the tile
