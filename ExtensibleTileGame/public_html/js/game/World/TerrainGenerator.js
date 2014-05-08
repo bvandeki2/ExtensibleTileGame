@@ -57,7 +57,7 @@ var TerrainGenerator = (function() {
         };
     };
     
-    module.protoype.addGenStop = function(start, eval, types) {
+    module.prototype.addGenStop = function(start, eval, types) {
         var i = 0, shapes =  this.method.shapes;
         while (i < shapes.length && start >= shapes[i].start)
            i++;
