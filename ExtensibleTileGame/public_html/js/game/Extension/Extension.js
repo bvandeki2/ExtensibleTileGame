@@ -10,7 +10,7 @@ var Extension = (function() {
     
     /**
      * 
-     * @param {strnig} src
+     * @param {string} src
      * @param {function} callback
      */
     function get(src, callback) {
